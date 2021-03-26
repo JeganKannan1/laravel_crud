@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 Route::get('/form', 'UserController@add')->name('add');
 Route::post('/form-submit', 'UserController@submit')->name('submit');
+Route::get('/list', 'UserController@list')->name('list');
+Route::get('/edit/{user}', 'UserController@edit')->name('edit');
+Route::post('/form-update', 'UserController@update')->name('update');
+Route::delete('/delete/{user}', 'UserController@delete')->name('delete');

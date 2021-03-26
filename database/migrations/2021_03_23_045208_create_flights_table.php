@@ -20,7 +20,7 @@ class CreateFlightsTable extends Migration
             $table->string('age');
             $table->timestamps();
         });
-    } remote add origin https://github.com/JeganKannan1/laravel_crud.git
+    } 
 
     /**
      * Reverse the migrations.

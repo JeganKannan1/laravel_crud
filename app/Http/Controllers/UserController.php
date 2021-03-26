@@ -17,10 +17,34 @@ class UserController extends Controller
         return view('form');
     }
     public function submit(Request $request){
-        // dd($request);
+       
         $user = $this->users->create($request->all());
-        dd("commming");
-        
+        $getCustomers = $this->users->get();
+        return view('form',compact('getCustomers'));
     }
-}
+    public function list()
+    {
+        $getCustomers = $this->users->get();
+        return view('form',compact('getCustomers'));
+    }
+    public function edit($id)
+    {
+        $getCustomers = $this->users->where('id',$id)->first();
 
+        return view('update',compact('getCustomers'));
+    }
+    public function update(Request $request){
+       
+        $this->users->where('id',$request->id)->update($request->except(['_token']));
+        return redirect('/list')->with('success','Customer Updated Successfully');
+    }
+    public function delete($id)
+    {
+        $this->users->where('id',$id)->delete();
+        return redirect('/list');
+
+     }
+}
+    
+
+ ?> 
